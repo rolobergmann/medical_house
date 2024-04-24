@@ -1,0 +1,14 @@
+<h1>Index</h1>
+
+{% if data %}
+    {% for especialidad in data %}
+        <p>{{ especialidad.nombre }} - {{ especialidad.id }}</p>
+    {% endfor %}
+{% else %}
+    <p>No data found.</p>
+{% endif %}
+
+
+
+
+
