@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<h1>Medicos y Especialidades</h1>
+
+<form action="" method="GET">
+    <label for="especialidad">Especialidad:</label>
+    <select name="especialidad">
+        <option value="">Todas</option>
+        {% for especialidad in especialidades %}
+            <option value="{{ especialidad.id }}">{{ especialidad.nombre }}</option>
+        {% endfor %}
+    </select>
+
+    <label for="ciudad">Ciudad:</label>
+    <input type="text" name="ciudad">
+
+    <input type="submit" value="Filtrar">
+</form>
+
+<br>
+
+{% if medicos %}
+    <table border="1">
+        <thead>
+            <tr>
+                <th>RUT</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Especialidad</th>
+                <th>Ciudad</th>
+                <th>Comuna</th>
+                <th>Calle</th>
+                <th>Número</th>
+                <th>Depto/Casa</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for medico in medicos %}
+                <tr>
+                    <td>{{ medico.rut }}</td>
+                    <td>{{ medico.nombre }}</td>
+                    <td>{{ medico.apellido }}</td>
+                    <td>{{ medico.especialidad_nombre }}</td>
+                    <td>{{ medico.ciudad }}</td>
+                    <td>{{ medico.comuna }}</td>
+                    <td>{{ medico.calle }}</td>
+                    <td>{{ medico.numero }}</td>
+                    <td>{{ medico.depto_casa }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No se encontraron medicos.</p>
+{% endif %}
+{% endblock contenido %}
