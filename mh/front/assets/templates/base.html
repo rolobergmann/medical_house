@@ -13,13 +13,13 @@
     />
   </head>
   <body>
-    <header class="container">{% include 'header.html' %}</header>
+{% comment %}     <header class="container">{% include 'header.html' %}</header> {% endcomment %}
 
-    <navbar class="container">{% include 'navbar.html' %}</navbar>
+    <navbar class="container">{% include 'navbar.html' %}</navbar> 
 
     <main class="container">{% block contenido %} {% endblock %}</main>
 
-    <footer class="container">{% include 'footer.html' %}</footer>
+    {% comment %} <footer class="container">{% include 'footer.html' %}</footer> {% endcomment %}
 
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
