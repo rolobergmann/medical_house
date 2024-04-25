@@ -32,6 +32,7 @@ def paciente(request):
 def medicos_especialidad(request):
     medicos = Medico.objects.all()
     especialidades = Especialidad.objects.all()
+    ciudades = Medico.objects.values_list('ciudad', flat=True).distinct()
 
     # Add filters to the queryset based on request parameters
     if request.GET.get('especialidad'):
@@ -42,7 +43,11 @@ def medicos_especialidad(request):
     # Annotate the queryset with the especialidad name
     medicos = medicos.annotate(especialidad_nombre=F('especialidad__nombre'))
 
-    return render(request, 'medicos_especialidad.html', {'medicos': medicos, 'especialidades': especialidades})
+    return render(request, 'medicos_especialidad.html', {'medicos': medicos, 'especialidades': especialidades, 'ciudades': ciudades})
+
+def paciente_detalle(request, paciente_id):
+    paciente = Paciente.objects.get(id=paciente_id)
+    return render(request, 'paciente_detalle.html', {'paciente': paciente})
 
 def medico_detalle(request, medico_id):
     medico = Medico.objects.get(id=medico_id)
