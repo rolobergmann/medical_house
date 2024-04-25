@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib import admin
 import uuid
+from django.contrib import admin
+import uuid
 
 # Create your models here.
 
@@ -15,7 +17,10 @@ class Especialidad(models.Model):
 
 class EspecialidadAdmin(admin.ModelAdmin):
     list_display = ('id','nombre', 'descripcion')
+class EspecialidadAdmin(admin.ModelAdmin):
+    list_display = ('id','nombre', 'descripcion')
 
+# Create your models here.
 # Create your models here.
 
 class Medico(models.Model):
